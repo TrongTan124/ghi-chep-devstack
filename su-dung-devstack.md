@@ -17,7 +17,7 @@ sudo su - stack
 
 Thực hiện tải một bản devstack về
 ```sh
-git clone https://git.openstack.org/openstack-dev/devstack
+git clone https://git.openstack.org/openstack-dev/devstack --branch stable/pike
 cd devstack
 ```
 
@@ -98,7 +98,33 @@ Chạy script sau để bắt đầu cài đặt
 ./stack.sh
 ```
 
-Quá trình cài đặt sẽ diễn ra khoảng 1h30p.
+Quá trình cài đặt sẽ diễn ra khoảng 1h30p. Thông tin sau khi cài đặt xong
+```sh
+=========================
+DevStack Component Timing
+=========================
+Total runtime    3255
+
+run_process       22
+test_with_retry    3
+apt-get-update     9
+pip_install      567
+osc              251
+wait_for_service  21
+git_timed        230
+dbsync           196
+apt-get          747
+=========================
+
+
+
+This is your host IP address: 172.16.68.57
+This is your host IPv6 address: ::1
+Horizon is now available at http://172.16.68.57/dashboard
+Keystone is serving at http://172.16.68.57/identity/
+The default users are: admin and demo
+The password: secretadmin
+```
 
 Thiết lập biến môi trường cho user `stack` như sau:
 ```sh
@@ -106,6 +132,8 @@ echo 'source /opt/stack/devstack/openrc admin admin' >> /opt/stack/.bashrc
 ```
 
 Sau khi cài xong, bạn chuyển sang user stack để bắt đầu thao tác. hoặc đăng nhập vào horizon.
+
+**NOTE**: Sau khi cài đặt xong, đừng khởi động hay tắt máy. vì sẽ bị mất cấu hình của `cinder, openvswitch`
 
 ## Tham khảo
 
