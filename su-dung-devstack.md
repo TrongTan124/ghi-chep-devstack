@@ -58,29 +58,29 @@ SCREEN_LOGDIR=/opt/stack/logs
 ENABLED_SERVICES=key,rabbit,mysql
 
 # Nova
-NOVA_BRANCH=stable/pike
+NOVA_BRANCH=$BRANCH
 ENABLED_SERVICES+=,n-api,n-obj,n-cpu,n-cond,n-sch
 
 # Placement service needed for Nova
 ENABLED_SERVICES+=,placement-api,placement-client
 
 # Glance
-GLANCE_BRANCH=stable/pike
+GLANCE_BRANCH=$BRANCH
 ENABLED_SERVICES+=,g-api,g-reg
 
 # Neutron
-NEUTRON_BRANCH=stable/pike
+NEUTRON_BRANCH=$BRANCH
 ENABLED_SERVICES+=,q-svc,q-agt,q-dhcp,q-l3,q-meta,neutron
 
 # Horizon
 ENABLED_SERVICES+=,horizon
 
 # Enable LBaaS V2
-NEUTRON_LBAAS_BRANCH=stable/pike
+NEUTRON_LBAAS_BRANCH=$BRANCH
 ENABLED_SERVICES+=,q-lbaasv2
 
 # Cinder (optional)
-CINDER_BRANCH=stable/pike
+CINDER_BRANCH=$BRANCH
 ENABLED_SERVICES+=,cinder,c-api,c-vol,c-sch
 
 # Tempest (optional)
