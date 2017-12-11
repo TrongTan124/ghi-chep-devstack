@@ -1,6 +1,18 @@
 ﻿## Giới thiệu
 
-Devstack giúp bạn triển khai nhanh một hệ thống Openstack với bằng 1 câu lệnh chạy script.
+Devstack giúp bạn triển khai nhanh một hệ thống Openstack bằng 1 script.
+
+## Chuẩn bị
+
+Bạn cần một máy chủ chạy Ubuntu 16.04 64bits.
+
+Cấu hình phụ thuộc vào số lượng project bạn muốn cài. Trong trường hợp của tôi, cấu hình như sau:
+```sh
+CPU: 4 vCPU
+RAM: 8096 GB
+Disk: 60GB
+Interface: eth0 ra internet với IP 172.16.68.57
+```
 
 ## Cài đặt
 
