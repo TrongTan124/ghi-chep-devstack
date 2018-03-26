@@ -44,64 +44,11 @@ git checkout stable/pike
 ```
 
 Ta tạo một tập tin `localrc` để thiết lập cấu hình cho devstack cài đặt
-```sh
-BRANCH=stable/pike
 
-enable_plugin barbican https://review.openstack.org/openstack/barbican $BRANCH
-enable_plugin neutron-lbaas https://review.openstack.org/openstack/neutron-lbaas $BRANCH
-enable_plugin octavia https://review.openstack.org/openstack/octavia $BRANCH
-LIBS_FROM_GIT+=python-neutronclient
+Nội dung của file `localrc` lấy từ các file sau:
 
-KEYSTONE_TOKEN_FORMAT=fernet
-
-DATABASE_PASSWORD=secretdatabase
-RABBIT_PASSWORD=secretrabbit
-ADMIN_PASSWORD=secretadmin
-SERVICE_PASSWORD=secretservice
-SERVICE_TOKEN=111222333444
-
-# Enable Logging
-LOGFILE=/opt/stack/logs/stack.sh.log
-VERBOSE=True
-LOG_COLOR=True
-SCREEN_LOGDIR=/opt/stack/logs
-
-# Pre-requisite
-ENABLED_SERVICES=key,rabbit,mysql
-
-# Nova
-NOVA_BRANCH=$BRANCH
-ENABLED_SERVICES+=,n-api,n-obj,n-cpu,n-cond,n-sch
-
-# Placement service needed for Nova
-ENABLED_SERVICES+=,placement-api,placement-client
-
-# Glance
-GLANCE_BRANCH=$BRANCH
-ENABLED_SERVICES+=,g-api,g-reg
-
-# Neutron
-NEUTRON_BRANCH=$BRANCH
-ENABLED_SERVICES+=,q-svc,q-agt,q-dhcp,q-l3,q-meta,neutron
-
-# Horizon
-ENABLED_SERVICES+=,horizon
-
-# Enable LBaaS V2
-NEUTRON_LBAAS_BRANCH=$BRANCH
-ENABLED_SERVICES+=,q-lbaasv2
-
-# Cinder (optional)
-CINDER_BRANCH=$BRANCH
-ENABLED_SERVICES+=,cinder,c-api,c-vol,c-sch
-
-# Tempest (optional)
-#ENABLED_SERVICES+=,tempest
-
-# Octavia
-ENABLED_SERVICES+=,octavia,o-api,o-cw,o-hm,o-hk
-
-```
+- [Pike](/localrc-stable-pike-octavia)
+- [Queen](/localrc-stable-queens-octavia)
 
 Ở đây, tôi chỉ định cài đặt toàn bộ project trong Openstack là stable/pike.
 
