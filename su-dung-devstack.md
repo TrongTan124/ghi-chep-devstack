@@ -27,6 +27,8 @@ echo "stack ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/stack
 sudo su - stack
 ```
 
+Bạn thay branch của devstack phù hợp với branch trong file localrc để cài đặt.
+
 Thực hiện tải một bản devstack về
 ```sh
 git clone https://git.openstack.org/openstack-dev/devstack --branch stable/pike
@@ -93,6 +95,8 @@ echo 'source /opt/stack/devstack/openrc admin admin' >> /opt/stack/.bashrc
 Sau khi cài xong, bạn chuyển sang user stack để bắt đầu thao tác. hoặc đăng nhập vào horizon.
 
 **NOTE**: Sau khi cài đặt xong, đừng khởi động hay tắt máy. vì sẽ bị mất cấu hình của `cinder, openvswitch`
+
+**NOTE**: Cài đặt thêm gói `sudo pip install python-octaviaclient` với user `stack` để sử dụng được tập lệnh `openstack loadbalancer`
 
 ## Tham khảo
 
