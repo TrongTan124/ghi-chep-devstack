@@ -2,7 +2,7 @@
 
 Tùy thuộc vào file cấu hình chỉ định để devstack cài đặt mà ta đặt tên cho phù hợp.
 
-Nếu bạn đặt tên file là `local.conf` thì trong tập tin cấu hình ta có dòng đầu tin sẽ như sau
+Nếu bạn đặt tên file là `local.conf` thì trong tập tin cấu hình ta có dòng đầu tiên sẽ có cấu trúc như sau:
 ```sh
 [[local|localrc]]
 ```
@@ -11,7 +11,7 @@ Còn nếu đặt tên file là `localrc` thì trong tập tin sẽ không cần
 
 Tại sao có sự khác biệt như vậy. Vì:
 
-- Khi bạn đặt tin tập tin là `local.conf` thì bạn có thể tùy chỉnh thông tin cấu hình. Ví dụ,  bằng cách đặt vào trong tập tin cấu hình đoạn sau:
+- Khi bạn đặt tên tập tin là `local.conf` thì bạn có thể tùy chỉnh thông tin cấu hình. Ví dụ,  bằng cách đặt vào trong tập tin cấu hình đoạn sau:
 ```sh
 [[post-config|$NOVA_CONF]]
 [DEFAULT]
