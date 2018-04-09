@@ -1,3 +1,4 @@
+[[local|localrc]]
 BRANCH=stable/queens
 
 enable_plugin barbican https://review.openstack.org/openstack/barbican $BRANCH
