@@ -51,6 +51,11 @@ Nội dung của file `local.conf` lấy từ file sau:
 
 - [Queens](/local-stable-queens.conf)
 
+Sử dụng lệnh để lấy file cấu hình về:
+```sh
+wget https://raw.githubusercontent.com/TrongTan124/ghi-chep-devstack/master/local-stable-queens.conf -O ./local.conf
+```
+
 Ở đây, tôi chỉ định cài đặt toàn bộ project trong Openstack là stable/queens
 
 Chạy script sau để bắt đầu cài đặt
