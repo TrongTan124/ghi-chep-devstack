@@ -16,6 +16,11 @@ Interface: eth0 ra internet với IP 123.30.212.235
 
 ## Cài đặt
 
+Trước tên cần chắc chắn hệ điều hành đã được cập nhật mới nhất
+```sh
+apt update && apt dist-upgrade -y
+```
+
 Devstack nên được chạy với user khác root, vì thế, ta sẽ tạo một username `stack` để chạy Devstack
 ```sh
 sudo useradd -s /bin/bash -d /opt/stack -m stack
