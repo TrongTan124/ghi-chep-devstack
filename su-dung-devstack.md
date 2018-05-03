@@ -1,4 +1,4 @@
-﻿## Giới thiệu
+## Giới thiệu
 
 Devstack giúp bạn triển khai nhanh một hệ thống Openstack bằng 1 script.
 
@@ -11,7 +11,7 @@ Cấu hình phụ thuộc vào số lượng project bạn muốn cài. Trong tr
 CPU: 4 vCPU
 RAM: 8096 GB
 Disk: 60GB
-Interface: eth0 ra internet với IP 172.16.68.57
+Interface: eth0 ra internet với IP 123.30.212.235
 ```
 
 ## Cài đặt
@@ -31,7 +31,7 @@ Bạn thay branch của devstack phù hợp với branch trong file localrc đ�
 
 Thực hiện tải một bản devstack về
 ```sh
-git clone https://git.openstack.org/openstack-dev/devstack --branch stable/pike
+git clone https://git.openstack.org/openstack-dev/devstack --branch stable/queens
 cd devstack
 ```
 
@@ -40,19 +40,18 @@ Kiểm tra nhánh của devstack
 git status
 ```
 
-Nếu là nhánh master thì ta chuyển sang nhánh pike như sau (do tôi cài stable/pike)
+Nếu là nhánh master thì ta chuyển sang nhánh queens như sau (do tôi cài stable/queens)
 ```sh
-git checkout stable/pike
+git checkout stable/queens
 ```
 
-Ta tạo một tập tin `localrc` để thiết lập cấu hình cho devstack cài đặt
+Ta tạo một tập tin `local.conf` để thiết lập cấu hình cho devstack cài đặt
 
-Nội dung của file `localrc` lấy từ các file sau:
+Nội dung của file `local.conf` lấy từ file sau:
 
-- [Pike](/localrc-stable-pike-octavia)
-- [Queen](/localrc-stable-queens-octavia)
+- [Queens](/local-stable-queens.conf)
 
-Ở đây, tôi chỉ định cài đặt toàn bộ project trong Openstack là stable/pike.
+Ở đây, tôi chỉ định cài đặt toàn bộ project trong Openstack là stable/queens
 
 Chạy script sau để bắt đầu cài đặt
 ```sh
@@ -63,26 +62,28 @@ Quá trình cài đặt sẽ diễn ra khoảng 1h30p. Thông tin sau khi cài �
 ```sh
 =========================
 DevStack Component Timing
+ (times are in seconds)  
 =========================
-Total runtime    3255
-
-run_process       22
-test_with_retry    3
-apt-get-update     9
-pip_install      567
-osc              251
-wait_for_service  21
-git_timed        230
-dbsync           196
-apt-get          747
+run_process           23
+test_with_retry        3
+apt-get-update        10
+pip_install          637
+osc                  184
+wait_for_service      21
+git_timed            550
+dbsync               164
+apt-get              1165
+-------------------------
+Unaccounted time     594
 =========================
+Total runtime        3351
 
 
 
-This is your host IP address: 172.16.68.57
+This is your host IP address: 123.30.212.235
 This is your host IPv6 address: ::1
-Horizon is now available at http://172.16.68.57/dashboard
-Keystone is serving at http://172.16.68.57/identity/
+Horizon is now available at http://123.30.212.235/dashboard
+Keystone is serving at http://123.30.212.235/identity/
 The default users are: admin and demo
 The password: secretadmin
 ```
