@@ -16,7 +16,7 @@ Interface: eth0 ra internet với IP 123.30.212.235
 
 ## Cài đặt
 
-Trước tên cần chắc chắn hệ điều hành đã được cập nhật mới nhất
+Trước tiên cần chắc chắn hệ điều hành đã được cập nhật mới nhất
 ```sh
 apt update && apt dist-upgrade -y
 ```
@@ -60,6 +60,8 @@ Sử dụng lệnh để lấy file cấu hình về:
 ```sh
 wget https://raw.githubusercontent.com/TrongTan124/ghi-chep-devstack/master/local-stable-queens.conf -O ./local.conf
 ```
+
+Bạn sử dụng lệnh `vim local.conf` để chỉnh sửa lại tham số `HOST_IP` trong tập tin thành IP của interface ra ngoài internet của máy bạn.
 
 Ở đây, tôi chỉ định cài đặt toàn bộ project trong Openstack là stable/queens
 
