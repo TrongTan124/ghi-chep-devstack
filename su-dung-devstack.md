@@ -45,25 +45,15 @@ Kiểm tra nhánh của devstack
 git status
 ```
 
-Nếu là nhánh master thì ta chuyển sang nhánh queens như sau (do tôi cài stable/queens)
+Nếu là nhánh master thì ta chuyển sang nhánh queens như sau . Do tôi cài stable/queens nên đã chỉ định ngay khi tải về rồi nên bước này bỏ qua
 ```sh
 git checkout stable/queens
 ```
 
-Ta tạo một tập tin `local.conf` để thiết lập cấu hình cho devstack cài đặt
-
-Nội dung của file `local.conf` lấy từ file sau:
-
-- [Queens](/local-stable-queens.conf)
-
-Sử dụng lệnh để lấy file cấu hình về:
+Sử dụng lệnh sau để lấy tập tin cấu hình chỉ định cho việc cài đặt về máy:
 ```sh
 wget https://raw.githubusercontent.com/TrongTan124/ghi-chep-devstack/master/local-stable-queens.conf -O ./local.conf
 ```
-
-Bạn sử dụng lệnh `vim local.conf` để chỉnh sửa lại tham số `HOST_IP` trong tập tin thành IP của interface ra ngoài internet của máy bạn.
-
-Ở đây, tôi chỉ định cài đặt toàn bộ project trong Openstack là stable/queens
 
 Chạy script sau để bắt đầu cài đặt
 ```sh
@@ -76,26 +66,26 @@ Quá trình cài đặt sẽ diễn ra khoảng 1h30p. Thông tin sau khi cài �
 DevStack Component Timing
  (times are in seconds)  
 =========================
-run_process           23
-test_with_retry        3
+run_process           26
+test_with_retry        4
 apt-get-update        10
-pip_install          637
-osc                  184
-wait_for_service      21
-git_timed            550
-dbsync               164
-apt-get              1165
+pip_install          570
+osc                  194
+wait_for_service      33
+git_timed            294
+dbsync               174
+apt-get              610
 -------------------------
-Unaccounted time     594
+Unaccounted time     565
 =========================
-Total runtime        3351
+Total runtime        2480
 
 
 
-This is your host IP address: 123.30.212.235
+This is your host IP address: 172.16.68.57
 This is your host IPv6 address: ::1
-Horizon is now available at http://123.30.212.235/dashboard
-Keystone is serving at http://123.30.212.235/identity/
+Horizon is now available at http://172.16.68.57/dashboard
+Keystone is serving at http://172.16.68.57/identity/
 The default users are: admin and demo
 The password: secretadmin
 ```
@@ -109,7 +99,8 @@ Sau khi cài xong, bạn chuyển sang user stack để bắt đầu thao tác. 
 
 **NOTE**: Sau khi cài đặt xong, đừng khởi động hay tắt máy. vì sẽ bị mất cấu hình của `cinder, openvswitch`
 
-**NOTE**: Cài đặt thêm gói `sudo pip install python-octaviaclient` với user `stack` để sử dụng được tập lệnh `openstack loadbalancer`
+**NOTE**: Cài đặt thêm gói `sudo pip install python-octaviaclient` với user `stack` để sử dụng được tập lệnh `openstack loadbalancer` 
+nếu bạn sử dụng file localrc.conf có thêm octavia
 
 ## Tham khảo
 
