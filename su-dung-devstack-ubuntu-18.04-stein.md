@@ -21,6 +21,120 @@ Trước tiên cần chắc chắn hệ điều hành đã được cập nhật
 apt update && apt dist-upgrade -y
 ```
 
+### Cấu hình IP cho netplan (nếu muốn)
+Sau đó thực hiện cấu hình địa chỉ IP tĩnh cho máy chủ Ubuntu 18.04. Tôi sử dụng trình quản lý network mặc định là netplan chứ không gỡ đi để cài đặt ifupdown.
+Kiểm tra file cấu hình network mặc định
+```sh
+ls /etc/netplan
+```
+
+sẽ thấy một file cấu hình network có tên là `50-cloud-init.yaml`. Chúng ta sẽ chỉnh cấu hình trong file này để thiết lập IP tĩnh. lưu ý là nếu có nhiều interface thì sẽ cấu hình tương tự. cần để ý việc giật cấp bằng khoảng trắng.
+```sh
+vim /etc/netplan/50-cloud-init.yaml
+```
+
+Điền các thông tin như sau:
+```sh
+addresses : [172.16.69.225/24]
+gateway4: 172.16.69.1
+dhcp4: no
+nameservers:
+  addresses: [8.8.8.8,8.8.4.4]
+```
+
+Áp dụng các cấu hình vừa thiết lập vào server bằng lệnh:
+```sh
+sudo netplan apply
+```
+
+### Cấu hình IP cho ifupdown (tôi xài ở đây)
+Chả hiểu sao để netplan ko cài được barbican, nên quyết định xài lại ifupdown.
+
+Cấu hình ifupdown như sau:
+
+- cấu hình repo
+```sh
+echo 'Acquire::http::Proxy "http://123.30.178.220:3142";' >  /etc/apt/apt.conf
+```
+
+- Cập nhật gói:
+```sh
+apt update -y && apt dist-upgrade -y
+```
+
+- Cài đặt ifupdown:
+```sh
+apt install ifupdown -y
+```
+
+- Cấu hình IP:
+```sh
+cat << EOF > /etc/network/interfaces
+# loopback network interface
+auto lo
+iface lo inet loopback
+
+# external network interface
+auto ens3
+iface ens3 inet static
+address 172.16.69.225
+netmask 255.255.255.0
+gateway 172.16.69.1
+dns-nameservers 8.8.8.8 8.8.4.4
+
+EOF
+```
+
+- Thiết lập IP vừa được cấu hình
+```sh
+ifdown --force ens3 lo && ifup -a
+```
+
+- Gỡ netplan:
+```sh
+systemctl stop networkd-dispatcher
+systemctl disable networkd-dispatcher
+systemctl mask networkd-dispatcher
+apt-get purge nplan netplan.io -y
+```
+
+- Thiết lập lại DNS cho máy chủ do ifupdown ko quản lý DNS.
+```sh
+sudo apt install resolvconf -y
+
+echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+echo "nameserver 8.8.4.4" >> /etc/resolv.conf
+echo "nameserver 8.8.8.8" >> /etc/resolvconf/resolv.conf.d/head
+echo "nameserver 8.8.4.4" >> /etc/resolvconf/resolv.conf.d/head
+sudo service resolvconf restart
+```
+
+- Cập nhật repo cho máy chủ
+```sh
+cat  << EOF >> /etc/apt/sources.list
+deb http://security.ubuntu.com/ubuntu/ bionic-security main restricted
+deb http://security.ubuntu.com/ubuntu/ bionic-security universe
+deb http://security.ubuntu.com/ubuntu/ bionic-security multiverse
+EOF
+```
+
+- Cập nhật HĐH khi thêm repo:
+```sh
+apt update -y && apt dist-upgrade -y && apt autoremove -y
+```
+
+- Khởi động lại máy chủ
+```sh
+init 6
+```
+
+### Chạy script cài đặt
+
+Phải chạy cập nhật DNS
+```sh
+echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+```
+
 Devstack nên được chạy với user khác root, vì thế, ta sẽ tạo một username `stack` để chạy Devstack
 ```sh
 sudo useradd -s /bin/bash -d /opt/stack -m stack
