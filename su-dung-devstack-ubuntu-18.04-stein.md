@@ -166,7 +166,12 @@ git checkout stable/stein
 
 Sử dụng lệnh sau để lấy tập tin cấu hình chỉ định cho việc cài đặt về máy:
 ```sh
-wget https://raw.githubusercontent.com/TrongTan124/ghi-chep-devstack/master/local-stable-stein.conf -O ./local.conf
+wget https://raw.githubusercontent.com/TrongTan124/ghi-chep-devstack/master/Local_conf/local-stable-stein.conf -O ./local.conf
+```
+
+Tôi muốn cài `heat`, `magnum`, `octavia` nên sẽ lấy file cấu hình bằng lệnh sau:
+```sh
+wget https://raw.githubusercontent.com/TrongTan124/ghi-chep-devstack/master/Local_conf/local-stable-stein-magnum-heat.conf -O ./local.conf
 ```
 
 Thiết lập repo `universe` để HĐH có thể tải gói về cài đặt

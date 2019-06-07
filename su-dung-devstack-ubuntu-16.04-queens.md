@@ -52,7 +52,7 @@ git checkout stable/queens
 
 Sử dụng lệnh sau để lấy tập tin cấu hình chỉ định cho việc cài đặt về máy:
 ```sh
-wget https://raw.githubusercontent.com/TrongTan124/ghi-chep-devstack/master/local-stable-queens.conf -O ./local.conf
+wget https://raw.githubusercontent.com/TrongTan124/ghi-chep-devstack/master/Local_conf/local-stable-queens.conf -O ./local.conf
 ```
 
 Chạy script sau để bắt đầu cài đặt
