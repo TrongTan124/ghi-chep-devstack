@@ -186,26 +186,26 @@ Quá trình cài đặt sẽ diễn ra khoảng 1h30p. Thông tin sau khi cài �
 DevStack Component Timing                                                                                                                                                                      
  (times are in seconds)                                                                                                                                                                        
 =========================                                                                                                                                                                      
-run_process           50                                                                                                                                                                       
-test_with_retry        3                                                                                                                                                                       
-apt-get-update         2                                                                                                                                                                       
-osc                  175
-wait_for_service      28
-git_timed            264
-dbsync               175
-pip_install          562
-apt-get              753
+run_process           67                                                                                                                                                                       
+test_with_retry        4                                                                                                                                                                       
+apt-get-update         5                                                                                                                                                                       
+osc                  462                                                                                                                                                                       
+wait_for_service      35
+git_timed            237
+dbsync                37
+pip_install          545
+apt-get               26
 -------------------------
-Unaccounted time     507
+Unaccounted time     2626
 =========================
-Total runtime        2519
+Total runtime        4044
 
 
 
-This is your host IP address: 192.168.30.30
+This is your host IP address: 172.16.69.225
 This is your host IPv6 address: ::1
-Horizon is now available at http://192.168.30.30/dashboard
-Keystone is serving at http://192.168.30.30/identity/
+Horizon is now available at http://172.16.69.225/dashboard
+Keystone is serving at http://172.16.69.225/identity/
 The default users are: admin and demo
 The password: secretadmin
 ```
