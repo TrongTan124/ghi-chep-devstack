@@ -118,6 +118,12 @@ deb http://security.ubuntu.com/ubuntu/ bionic-security multiverse
 EOF
 ```
 
+Thiết lập repo `universe` để HĐH có thể tải gói về cài đặt
+```sh
+sudo add-apt-repository universe
+sudo apt update
+```
+
 - Cập nhật HĐH khi thêm repo:
 ```sh
 apt update -y && apt dist-upgrade -y && apt autoremove -y
@@ -129,11 +135,6 @@ init 6
 ```
 
 ### Chạy script cài đặt
-
-Phải chạy cập nhật DNS
-```sh
-echo "nameserver 8.8.8.8" >> /etc/resolv.conf
-```
 
 Devstack nên được chạy với user khác root, vì thế, ta sẽ tạo một username `stack` để chạy Devstack
 ```sh
@@ -174,14 +175,10 @@ Tôi muốn cài `heat`, `magnum`, `octavia` nên sẽ lấy file cấu hình b�
 wget https://raw.githubusercontent.com/TrongTan124/ghi-chep-devstack/master/Local_conf/local-stable-stein-magnum-heat.conf -O ./local.conf
 ```
 
-Thiết lập repo `universe` để HĐH có thể tải gói về cài đặt
-```sh
-sudo add-apt-repository universe
-sudo apt update
-```
-
 Chạy script sau để bắt đầu cài đặt
 ```sh
+byobu
+
 ./stack.sh
 ```
 
