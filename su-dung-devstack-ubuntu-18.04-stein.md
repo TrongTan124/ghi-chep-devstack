@@ -98,17 +98,6 @@ systemctl mask networkd-dispatcher
 apt-get purge nplan netplan.io -y
 ```
 
-- Thiết lập lại DNS cho máy chủ do ifupdown ko quản lý DNS.
-```sh
-sudo apt install resolvconf -y
-
-echo "nameserver 8.8.8.8" >> /etc/resolv.conf
-echo "nameserver 8.8.4.4" >> /etc/resolv.conf
-echo "nameserver 8.8.8.8" >> /etc/resolvconf/resolv.conf.d/head
-echo "nameserver 8.8.4.4" >> /etc/resolvconf/resolv.conf.d/head
-sudo service resolvconf restart
-```
-
 - Cập nhật repo cho máy chủ
 ```sh
 cat  << EOF >> /etc/apt/sources.list
@@ -122,6 +111,17 @@ Thiết lập repo `universe` để HĐH có thể tải gói về cài đặt
 ```sh
 sudo add-apt-repository universe
 sudo apt update
+```
+
+- Thiết lập lại DNS cho máy chủ do ifupdown ko quản lý DNS.
+```sh
+sudo apt install resolvconf -y
+
+echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+echo "nameserver 8.8.4.4" >> /etc/resolv.conf
+echo "nameserver 8.8.8.8" >> /etc/resolvconf/resolv.conf.d/head
+echo "nameserver 8.8.4.4" >> /etc/resolvconf/resolv.conf.d/head
+sudo service resolvconf restart
 ```
 
 - Cập nhật HĐH khi thêm repo:
