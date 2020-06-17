@@ -126,7 +126,7 @@ cd devstack
 
 Tôi muốn cài `heat`, `magnum`, `octavia` nên sẽ lấy file cấu hình bằng lệnh sau:
 ```sh
-wget https://raw.githubusercontent.com/TrongTan124/ghi-chep-devstack/master/Local_conf/local-stable-stein-magnum-heat.conf -O ./local.conf
+wget https://raw.githubusercontent.com/TrongTan124/ghi-chep-devstack/master/Local_conf/local-stable-ussuri-magnum-heat-octavia.conf -O ./local.conf
 ```
 
 Chạy script sau để bắt đầu cài đặt
