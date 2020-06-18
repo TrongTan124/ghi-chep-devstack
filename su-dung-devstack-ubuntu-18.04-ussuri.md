@@ -187,8 +187,6 @@ Sau khi cài xong, bạn chuyển sang user stack để bắt đầu thao tác. 
 
 **NOTE**: Sau khi cài đặt xong, đừng khởi động hay tắt máy. vì sẽ bị mất cấu hình của `cinder, openvswitch`
 
-**NOTE**: Cài đặt thêm gói `sudo pip install python-octaviaclient` với user `stack` để sử dụng được tập lệnh `openstack loadbalancer` trong trường hợp bạn sử dụng file localrc.conf có thêm octavia
-
 ## Tham khảo
 
 - [https://docs.openstack.org/devstack/latest/](https://docs.openstack.org/devstack/latest/)
