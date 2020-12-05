@@ -104,7 +104,7 @@ cd devstack
 
 Tôi chỉ cài đặt các project core nên sẽ lấy file cấu hình bằng lệnh sau:
 ```sh
-wget https://raw.githubusercontent.com/TrongTan124/ghi-chep-devstack/master/Local_conf/local-stable-rocky.conf -O ./local.conf
+wget https://raw.githubusercontent.com/TrongTan124/ghi-chep-devstack/master/Local_conf/local-stable-victoria.conf -O ./local.conf
 ```
 
 Chạy script sau để bắt đầu cài đặt
