@@ -14,7 +14,7 @@ CPU: 8 vCPU
 RAM: 12 GB
 HDD1: 50GB
 HDD2: 50GB
-Interface: eth0 ra internet với IP 172.20.0.10
+Interface: ens160 ra internet với IP 172.20.0.10
 ```
 
 ## Cài đặt
@@ -35,7 +35,7 @@ Do tôi chọn sử dụng OpenvSwitch làm switch ảo khi dựng cụm OpenSta
 apt install ifupdown -y
 ```
 
-- Cấu hình IP cho interface `ens3`. Đây là interface mặc định khi cài đặt HĐH xong sẽ có
+- Cấu hình IP cho interface `ens160`. Đây là interface mặc định khi cài đặt HĐH xong sẽ có:
 ```sh
 cat << EOF > /etc/network/interfaces
 # loopback network interface
